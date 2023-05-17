@@ -12,6 +12,7 @@ public class KeyRepeat {
 		while(true) {
 			System.out.print("계속 반복할까요?(y/n)");
 			String key = sc.nextLine();  //String형이므로 쌍따옴표로 사용
+			// scanner는 char매게변수가 없기때문에 string으로 사용
 			
 			if(key.equals("y") || key.equals("Y")) {
 				System.out.println("계속 반복");
