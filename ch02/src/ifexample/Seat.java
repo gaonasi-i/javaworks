@@ -1,4 +1,4 @@
-package forexample;
+package ifexample;
 
 import java.util.Scanner;
 
