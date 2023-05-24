@@ -37,23 +37,24 @@ public class AdmissionFee {
 				}
 				System.out.printf("입장료는 %,d원 입니다.\n", fee);
 				
+			
+			
+			
+				System.out.print("계속 하시려면 Y(y) 아니면 N(n): ");
+				String text = sc.nextLine();
+				
+				if(text.equalsIgnoreCase("Y")) {
+					continue;
+				}else if(text.equalsIgnoreCase("N")) {
+					System.out.println("프로그램 종료");
+					break;
+				}else {
+					System.out.println("잘못입력하셨습니다. 다시 입력해주세요.");
+					System.out.print("계속 하시려면 Y(y) 아니면 N(n): ");
+					continue;
+				}
 			}catch(NumberFormatException e) {
 				System.out.println("잘못입력하셨습니다. 다시 입력해주세요.");
-				continue;
-			}
-			
-			
-			System.out.print("계속 하시려면 Y(y) 아니면 N(n): ");
-			String text = sc.nextLine();
-			
-			if(text.equalsIgnoreCase("Y")) {
-				continue;
-			}else if(text.equalsIgnoreCase("N")) {
-				System.out.println("프로그램 종료");
-				break;
-			}else {
-				System.out.println("잘못입력하셨습니다. 다시 입력해주세요.");
-				System.out.print("계속 하시려면 Y(y) 아니면 N(n): ");
 				continue;
 			}
 			

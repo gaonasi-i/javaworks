@@ -5,31 +5,33 @@ public class Book {
 	String author;
 	
 	//생성자
-	Book(String bookName, String author){
+	public Book(String bookName, String author){
 		this.bookName = bookName;
-		this.author = bookName;
+		this.author = author;
 	}
 	
-	Book(){}  //기본생성자
+	//생성자 오버로딩
+	public Book(){}  //기본생성자
 	
-	void bookInfo() {
+	//메개변수가 있는 생성자
+	public void bookInfo() {
 		System.out.println(bookName + ", " + author);
 	}
 	
 	//책 이름, 저자를 입력받는 메서드
-	void setBookName(String bookName){
+	public void setBookName(String bookName){
 		this.bookName = bookName;
 	}
-	void setAuthor(String author){
+	public void setAuthor(String author){
 		this.author = author;
 	}
 	
 	
 	//책 이름, 저자를 가져오는 메서드
-	String getBookName(){
+	public String getBookName(){
 		return bookName;
 	}
-	String getAuthor(){
+	public String getAuthor(){
 		return author;
 	}
 }

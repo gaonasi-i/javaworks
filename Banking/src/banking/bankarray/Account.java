@@ -1,9 +1,9 @@
 package banking.bankarray;
 
 public class Account {
-	private String ano;
-	private String owner;
-	private int belance;
+	private String ano;       //계좌 번호
+	private String owner;     //계좌주
+	private int belance;      //찬고
 	
 	public Account(String ano, String owner, int belance) {
 		this.ano = ano;
@@ -19,5 +19,10 @@ public class Account {
 	}
 	public int getBelance(){
 		return belance;
+	}
+	
+	//잔고를 저장하는 메서드
+	public void setBelance(int belance) {
+		this.belance = belance;
 	}
 }

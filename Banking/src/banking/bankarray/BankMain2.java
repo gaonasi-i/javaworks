@@ -2,7 +2,7 @@ package banking.bankarray;
 
 import java.util.Scanner;
 
-public class BankMain {
+public class BankMain2 {
 	// 통장계좌를 만들 객체 배열 100개 생성
 	static Account[] accountArray = new Account[100];  //전역 배열
 	static Scanner sc = new Scanner(System.in);
@@ -43,27 +43,34 @@ public class BankMain {
 		System.out.println("    ♣ 아래의 입력란에 정보를 입력해주세요. ♣");
 		System.out.println("-----------------------------------------");
 		
-		System.out.print("계좌번호: ");
-		String ano = sc.nextLine();
-		
-		System.out.print("계좌주　: ");
-		String owner = sc.nextLine();
-		
-		System.out.print("초기입금액: ");
-		int belance = Integer.parseInt(sc.nextLine());
-		
-		//첫번째 계좌 생성
-		//accountArray[0] = new Account(ano, owner, belance);
-		for(int i=0; i<accountArray.length; i++) {                   //전체 배열을 반복하면서
-			if(accountArray[i] == null) {                            //계좌가 생성되지 않은 인덱스에
-				accountArray[i] = new Account(ano, owner, belance);  //계좌를 생성함
-				System.out.println("계좌가 생성되었습니다.");
-				break;
+		while(true) {
+			System.out.print("계좌번호: ");
+			String ano = sc.nextLine();
+			
+			//첫번째 계좌 생성
+			//accountArray[0] = new Account(ano, owner, belance);
+			if(findAccount(ano) != null) {
+				System.out.println("중복계좌 입니다. 다시 확인해주세요.");
+			}else {
+				System.out.print("계좌주　: ");
+				String owner = sc.nextLine();
+				
+				System.out.print("초기입금액: ");
+				int belance = Integer.parseInt(sc.nextLine());
+				
+				for(int i=0; i<accountArray.length; i++) {                   //전체 배열을 반복하면서
+					if(accountArray[i] == null) {                            //계좌가 생성되지 않은 인덱스에
+						accountArray[i] = new Account(ano, owner, belance);  //계좌를 생성함
+						System.out.println("계좌가 생성되었습니다.");
+						break;
+					}
+				}
+				break;  //계좌를 생성하고 빠져나옴
 			}
-		}
+		}//while 끝
 		
 	}
-	
+		
 	//계좌 목록을 출력하는 함수
 	private static void getAccountList() {
 		for(int i=0; i<accountArray.length; i++) {
@@ -82,19 +89,24 @@ public class BankMain {
 		System.out.println("       ♣ 예금할 계좌와 금액을 입력해주세요 ♣");
 		System.out.println("-----------------------------------------");
 		
-		System.out.print("계좌번호: ");
-		String ano = sc.nextLine();
-		
-		System.out.print("입금액　: ");
-		int money = Integer.parseInt(sc.nextLine());
-		
-		if(findAccount(ano) != null) {      //계좌를 찾았다면(반환값이 있다면)
-			//예금 -> 원래있던 잔고+입금액
-			Account account = findAccount(ano);
-			account.setBelance(account.getBelance() + money);
-			System.out.println("정상 처리 되었습니다.");
-		}else {
-			System.out.println("계좌가 없습니다.");
+		while(true) {
+			System.out.print("계좌번호: ");
+			String ano = sc.nextLine();
+			
+			if(findAccount(ano) != null) {
+				System.out.print("입금액　: ");
+				int money = Integer.parseInt(sc.nextLine());
+				
+				if(findAccount(ano) != null) {      //계좌를 찾았다면(반환값이 있다면)
+					Account account = findAccount(ano);
+					//예금 -> 원래있던 잔고+입금액
+					account.setBelance(account.getBelance() + money);
+					System.out.println("정상 처리 되었습니다.");
+					break;
+				}
+			}else {
+				System.out.println("계좌가 없습니다. 다시 입력해주세요.");
+			}
 		}
 	}
 	
@@ -104,19 +116,30 @@ public class BankMain {
 		System.out.println("       ♣ 출금할 계좌와 금액을 입력해주세요 ♣");
 		System.out.println("-----------------------------------------");
 		
-		System.out.print("계좌번호: ");
-		String ano = sc.nextLine();
-		
-		System.out.print("출금액　: ");
-		int money = Integer.parseInt(sc.nextLine());
-		
-		if(findAccount(ano) != null) {      //계좌를 찾았다면(반환값이 있다면)
-			//예금 -> 원래있던 잔고-입금액
-			Account account = findAccount(ano);
-			account.setBelance(account.getBelance() - money);
-			System.out.println("정상 처리 되었습니다.");
-		}else {
-			System.out.println("계좌가 없습니다.");
+		while(true) {
+			System.out.print("계좌번호: ");
+			String ano = sc.nextLine();
+			
+			if(findAccount(ano) != null) {    			
+				while(true) {
+					System.out.print("출금액　: ");
+					int money = Integer.parseInt(sc.nextLine());
+					
+					Account account = findAccount(ano);
+					if(money > account.getBelance()) {
+						System.out.println("잔액이 부족합니다. 다시 확인해주세요.");
+						
+					}else {
+						//예금 -> 원래있던 잔고-입금액
+						account.setBelance(account.getBelance() - money);
+						System.out.println("정상 처리 되었습니다.");
+						break;
+					}
+				}
+				break;
+			}else {
+				System.out.println("계좌가 없습니다. 다시 입력해주세요.");
+			}
 		}
 	}
 	
