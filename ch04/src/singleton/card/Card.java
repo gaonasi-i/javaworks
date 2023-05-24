@@ -1,4 +1,4 @@
-package statics;
+package singleton.card;
 
 public class Card {
 	static int serialNum = 100; //기존번호 클래스변수, 정적변수
