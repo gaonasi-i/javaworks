@@ -11,7 +11,7 @@ public class Car {
 		this.cc = cc;
 	}
 	
-	String CarInfo() {
+	String carInfo() {
 		return "브랜드: " + brand + ", 배기량: " + cc;
 	}
 
