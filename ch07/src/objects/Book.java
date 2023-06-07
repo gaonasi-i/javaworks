@@ -11,6 +11,10 @@ public class Book {
 		this.bookNumber = bookNumber;
 		this.bookTitle = bookTitle;
 	}
+	
+//	public void showInfo() {
+//		System.out.println(bookNumber + ", " + bookTitle);
+//	}
 
 	//toString() 재정의
 	@Override

@@ -16,6 +16,7 @@ public class ToStringEx {
 		Book book = new Book(1, "혼공 자바");
 		System.out.println(book);
 		System.out.println(book.toString());
+		//book.showInfo();
 	}
 
 }
